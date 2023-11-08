@@ -110,3 +110,16 @@ Feature: Ejemplos practicos Karate
     When method get
     Then status 200
 
+  @CP11
+  Scenario: Metodo actualizar
+    Given url "https://reqres.in"
+    And path "api/users/2"
+    And request
+      """
+        {
+          name: 'morpheus',
+          job: 'zion resident'
+        }
+      """
+    When method patch
+    Then status 200
