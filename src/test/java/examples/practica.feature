@@ -121,7 +121,7 @@ Feature: Ejemplos practicos Karate
     And request body
     When method put
     Then status 200
-    And response.job ="zion resident"
+    And response.job =="zion resident"
 
   @CP12
   Scenario: Caso de prueba con metodo PATCH
@@ -134,4 +134,32 @@ Feature: Ejemplos practicos Karate
     And request body
     When method patch
     Then status 200
-    And response.job ="zion resident"
+    And response.job =="zion resident"
+
+  @CP13
+
+  Scenario: Inicio de Sesion Fallido
+* def msj = "Missing password"
+    Given url "https://reqres.in/"
+    And path "api/login"
+    And request read("login.json")
+    When method post
+    Then status 400
+    Then response.error == msj
+
+  @CP14
+
+  Scenario: Registro Exitoso usuario
+    * def body =
+    """
+     {
+    "email": "eve.holt@reqres.in",
+    "password": "pistol"
+}
+    """
+    Given url "https://reqres.in/"
+    And path "api/register"
+    And request body
+    When method post
+    Then status 200
+    Then response.id==4
