@@ -130,15 +130,14 @@ Feature: Ejemplos practicos Karate
 
   @CP12
   Scenario: Actualizar el usuario
-    * def id = 2
-    * def body =
-    """
-       {name: "morpheus", job: "zion resident" }
-    """
-    Given url "https://reqres.in"
-    And path "api/users/" + id
-    And request body
-    When method patch
-    Then status 200
-    And match response.name == "morpheus"
-    And match response.job == "zion resident"
+    * def urlreqres = https://reqres.in/api/users
+    Given url urlreqres
+    And request read("example2.json")
+    When method post
+    Then status 201
+    And match response.name == "sname"
+    And match response.job ==  "sjob"
+    Example
+      | sname   | sjob        |
+      | Marta   | presidente  |
+      | Gonzalo | gerente     |
