@@ -111,7 +111,7 @@ Feature: Ejemplos practicos Karate
     Then status 200
 
   @CP11
-  Scenario: Metodo actualizar
+  Scenario: Metodo actualizar con request
     Given url "https://reqres.in"
     And path "api/users/2"
     And request
@@ -123,3 +123,25 @@ Feature: Ejemplos practicos Karate
       """
     When method patch
     Then status 200
+    And match response.name == 'morpheus'
+    And match response.job == 'zion resident'
+
+  @CP12
+  Scenario: Metodo actualizar con form field
+    Given url "https://reqres.in"
+    And path "api/users/2"
+    And form field name = 'morpheus'
+    And form field job = 'zion resident'
+    When method patch
+    Then status 200
+    And match response.name == 'morpheus'
+    And match response.job == 'zion resident'
+
+  @CP12
+  Scenario: Metodo get usuario no encontrado
+    Given url "https://reqres.in"
+    And path "api/users/23"
+    When method get
+    Then status 404
+
+
