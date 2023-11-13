@@ -144,4 +144,17 @@ Feature: Ejemplos practicos Karate
     When method get
     Then status 404
 
+@CP13
+  Scenario Outline: crear usuario con csv
+    Given  url "https://reqres.in"
+    And path "/api/users"
+    And request {name: '#(name)', job:'#(job)'}
+    When method post
+    Then status 201
+
+    Examples:
+       |read ('usuarios.csv')|
+
+
+
 
