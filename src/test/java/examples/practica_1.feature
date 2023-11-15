@@ -110,34 +110,36 @@ Feature: Ejemplos practicos Karate
     When method get
     Then status 200
 
- @CP11
+  @CP11
   Scenario: Actualizar usuario
- Given url "https://reqres.in"
- And path
-   And request
+    Given url "https://reqres.in"
+    And path "api/users/2"
+    And request
       """
        {
           name: "morpheus",
           job: "zion resident"
         }
       """
-   When method put
-   Then status 200
-   And match response.name == "morpheus"
-   And match response.job == "zion resident"
-
+    When method put
+    Then status 200
+    And match response.name == "morpheus"
+    And match response.job == "zion resident"
 
 
   @CP12
-  Scenario: Actualizar el usuario
-    * def urlreqres = https://reqres.in/api/users
-    Given url urlreqres
-    And request read("example2.json")
-    When method post
-    Then status 201
-    And match response.name == "sname"
-    And match response.job ==  "sjob"
-    Example
-      | sname   | sjob        |
-      | Marta   | presidente  |
-      | Gonzalo | gerente     |
+  Scenario: Actualizar usuario_2
+    * def urlrequest = "https://reqres.in"
+    * def id = 2
+    Given url urlrequest
+    And path "api/users/" + id
+    And request read("example.json")
+    When method patch
+    Then status 200
+    And match response.title == "foo"
+    And match response.body == "bar"
+    And match response.userId == 1
+
+
+
+

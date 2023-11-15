@@ -30,8 +30,7 @@ Feature: Ejemplos QA Team
        {
           name: "morpheus",
           job: "zion resident"
-        }
-      """
+        }      """
     When method put
     Then status 200
     And match response.name == "morpheus"

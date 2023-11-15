@@ -7,12 +7,17 @@ function fn() {
   var config = {
     env: env,
     myVarName: 'someValue'
+    urlBase: 'https://reqres.in/'
   }
   if (env == 'dev') {
     // customize
+
     // e.g. config.foo = 'bar';
   } else if (env == 'e2e') {
     // customize
+
   }
   return config;
 }
+
+
