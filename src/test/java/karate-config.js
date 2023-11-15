@@ -6,7 +6,8 @@ function fn() {
   }
   var config = {
     env: env,
-    myVarName: 'someValue'
+    myVarName: 'someValue',
+    UrlBase: 'https://reqres.in'
   }
   if (env == 'dev') {
     // customize
