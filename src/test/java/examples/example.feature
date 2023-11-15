@@ -1,7 +1,7 @@
 Feature: Ejemplos QA Team
   
   Scenario: Caso 1 - lista de usuarios
-    Given url "https://reqres.in/"
+    Given url urlBase
     And path "api/users"
     When method get
     Then status 201
