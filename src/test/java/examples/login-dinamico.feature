@@ -2,7 +2,7 @@ Feature: Inicio de Sesion dinamico
 
   @login
   Scenario: Generar Token
-    Given url "https://reqres.in/"
+    Given url urlBase
     And path "/api/login"
     And request { "email": #email, "password": #password }
     When method post

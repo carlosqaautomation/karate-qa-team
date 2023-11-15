@@ -19,7 +19,7 @@ Feature: Ejemplos practicos Karate
 
   @CP03
   Scenario: Listado de usuarios
-    Given url "https://reqres.in"
+    Given url urlBase
     And path "api/users"
     When method get
     Then status 200
@@ -94,7 +94,7 @@ Feature: Ejemplos practicos Karate
 
   @CP09
   Scenario: Login con form field
-    Given url "https://reqres.in"
+    Given url urlBase
     And path "/api/login"
     And form field email = "eve.holt@reqres.in"
     And form field password = "cityslicka"
@@ -104,7 +104,7 @@ Feature: Ejemplos practicos Karate
 
   @CP10
   Scenario: Filtro de usuarios
-    Given url "https://reqres.in"
+    Given url urlBase
     And path "api/users"
     And param delay = 3
     When method get

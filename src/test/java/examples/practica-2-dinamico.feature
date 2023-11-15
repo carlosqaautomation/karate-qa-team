@@ -3,7 +3,7 @@ Feature: Practica Data-Driven Testing
   Background:
     * def response = call read('classpath:examples/login.feature@login') {"email": "eve.holt@reqres.in", "password": "12345678" }
     * def token = response.authToken
-    * url "https://reqres.in/"
+    * url urlBase
     * header Autorization = "Bearer "+response.authToken
 
 
